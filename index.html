@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iglesia Misionera Asamblea Cristiana - I.M.A.C.</title>
+    <!-- Tailwind CSS para diseño moderno y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center space-x-3 py-2">
+                    <!-- Integración del Logo real en la barra de navegación -->
+                    <img src="1000696501.jpg" alt="Logo I.M.A.C." class="w-14 h-14 object-cover rounded-full border-2 border-blue-600 shadow-sm bg-white">
+                    <div>
+                        <span class="text-base md:text-lg font-bold text-blue-950 block leading-tight">Iglesia Misionera Asamblea Cristiana</span>
+                        <span class="text-xs font-semibold text-blue-600 block">I.M.A.C. &bull; 2da de Crónica 7:14</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#inicio" class="text-gray-600 hover:text-blue-600 font-medium">Inicio</a>
+                    <a href="#versiculo" class="text-gray-600 hover:text-blue-600 font-medium">Versículo</a>
+                    <a href="#nosotros" class="text-gray-600 hover:text-blue-600 font-medium">Nosotros</a>
+                    <a href="#ministerios" class="text-gray-600 hover:text-blue-600 font-medium">Ministerios</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-blue-600 font-medium">Contacto</a>
+                    <button onclick="toggleAdminModal()" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition">
+                        <i class="fa-solid fa-lock mr-1"></i> Admin
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HÉROE / INICIO (Estructura de dos columnas integrando el Logo) -->
+    <header id="inicio" class="relative bg-gradient-to-r from-blue-950 to-blue-900 text-white py-16 md:py-24 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
+        <div class="relative max-w-6xl mx-auto grid md:grid-cols-12 gap-12 items-center">
+            
+            <!-- Columna de Texto -->
+            <div class="md:col-span-7 text-left">
+                <span class="bg-amber-500 text-blue-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">I.M.A.C. &bull; 2da de Crónica 7:14</span>
+                <h1 id="txt-hero-titulo" class="text-4xl md:text-5xl font-extrabold mt-4 mb-6 leading-tight">Bienvenidos a nuestra comunidad de fe</h1>
+                <p id="txt-hero-subtitulo" class="text-lg md:text-xl text-blue-100 mb-8">Un lugar para restaurar vidas, crecer espiritualmente y servir al prójimo con amor misionero.</p>
+                <a href="#contacto" class="inline-block bg-amber-500 hover:bg-amber-600 text-blue-950 font-bold px-8 py-3 rounded-lg shadow-lg transition transform hover:-translate-y-0.5">
+                    Visítanos este Domingo
+                </a>
+            </div>
+
+            <!-- Columna de Imagen (Integración Destacada del Logo) -->
+            <div class="md:col-span-5 flex justify-center">
+                <div class="relative group">
+                    <!-- Resplandor dinámico de fondo para el logo -->
+                    <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-blue-500 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="1000696501.jpg" alt="Logo Iglesia Misionera Asamblea Cristiana" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-white shadow-2xl bg-white">
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- SECCIÓN: VERSÍCULO DIARIO (DINÁMICO) -->
+    <section id="versiculo" class="bg-amber-50 py-12 px-4 shadow-inner">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="inline-block text-amber-600 text-3xl mb-3"><i class="fa-solid fa-book-bible"></i></div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Versículo para Hoy</h2>
+            <blockquote class="text-xl italic text-gray-700 font-serif px-4 md:px-8">
+                "<span id="verse-text">Cargando palabra de vida...</span>"
+            </blockquote>
+            <p id="verse-ref" class="text-sm font-bold text-amber-700 mt-2 uppercase tracking-wider">- ...</p>
+            <button onclick="generateRandomVerse()" class="mt-6 text-sm bg-white border border-amber-300 text-amber-700 px-4 py-2 rounded-full hover:bg-amber-100 transition shadow-sm">
+                <i class="fa-solid fa-arrows-rotate mr-1"></i> Leer otro versículo
+            </button>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: NOSOTROS -->
+    <section id="nosotros" class="py-16 px-4 max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-blue-950">Nuestra Identidad</h2>
+            <div class="h-1 w-16 bg-blue-600 mx-auto mt-3"></div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-600">
+                <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-bullseye"></i></div>
+                <h3 class="text-xl font-bold mb-3">Misión</h3>
+                <p id="txt-nosotros-mision" class="text-gray-600 leading-relaxed">Predicar el evangelio de Jesucristo a toda criatura, discipular a los creyentes y extender los lazos misioneros locales e internacionales conforme a la gran comisión.</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-amber-500">
+                <div class="text-amber-500 text-2xl mb-3"><i class="fa-solid fa-eye"></i></div>
+                <h3 class="text-xl font-bold mb-3">Visión</h3>
+                <p id="txt-nosotros-vision" class="text-gray-600 leading-relaxed">Ser una iglesia de sano testimonio, vibrante en adoración, sólida en doctrina bíblica y reconocida por su impacto social y misionero transformador.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: MINISTERIOS -->
+    <section id="ministerios" class="bg-gray-100 py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-950">Nuestros Ministerios</h2>
+                <div class="h-1 w-16 bg-blue-600 mx-auto mt-3"></div>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-children"></i></div>
+                    <h3 class="font-bold text-lg mb-2">Ministerio Infantil</h3>
+                    <p id="txt-min-infantil" class="text-gray-600 text-sm">Formando la base espiritual de las nuevas generaciones a través de enseñanzas dinámicas y recreativas.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-guitar"></i></div>
+                    <h3 class="font-bold text-lg mb-2">Alabanza y Adoración</h3>
+                    <p id="txt-min-alabanza" class="text-gray-600 text-sm">Guiando a la congregación a la presencia de Dios mediante la música y un corazón dispuesto a adorar.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-xl mb-4"><i class="fa-solid fa-earth-americas"></i></div>
+                    <h3 class="font-bold text-lg mb-2">Evangelismo y Misiones</h3>
+                    <p id="txt-min-misiones" class="text-gray-600 text-sm">Llevando la palabra de restauración fuera de las paredes del templo, apoyando obras y proyectos de ayuda comunitaria.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA / CONTACTO -->
+    <footer id="contacto" class="bg-blue-950 text-white pt-12 pb-6 px-4">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 border-b border-blue-900 pb-8 mb-6">
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-amber-400">I.M.A.C.</h4>
+                <p class="text-blue-200 text-sm mb-2">"Si se humillare mi pueblo, sobre el cual mi nombre es invocado, y oraren, y buscaren mi rostro..."</p>
+                <span class="text-xs text-blue-400 font-semibold block">2 Crónicas 7:14</span>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-amber-400">Reuniones</h4>
+                <p id="txt-footer-horarios" class="text-blue-200 text-sm whitespace-pre-line">Domingos: Escuela Dominical - 9:00 AM&#10;Domingos: Culto de Adoración - 11:00 AM&#10;Miércoles: Culto de Oración - 7:30 PM</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4 text-amber-400">Ubicación y Contacto</h4>
+                <p id="txt-footer-contacto" class="text-blue-200 text-sm whitespace-pre-line"><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i>Av. Principal #123, Santo Domingo, RD&#10;<i class="fa-solid fa-phone text-amber-400 mr-2"></i>(809) 555-0199&#10;<i class="fa-solid fa-envelope text-amber-400 mr-2"></i>contacto@imac.org</p>
+            </div>
+        </div>
+        <div class="text-center text-xs text-blue-400">
+            &copy; 2026 Iglesia Misionera Asamblea Cristiana. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- MODAL DE ADMINISTRACIÓN (GESTOR DE CONTENIDO / CMS) -->
+    <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col">
+            <div class="p-5 border-b border-gray-200 flex justify-between items-center bg-blue-900 text-white rounded-t-xl">
+                <h3 class="text-lg font-bold"><i class="fa-solid fa-pen-to-square mr-2"></i>Panel de Administración de Contenido</h3>
+                <button onclick="toggleAdminModal()" class="text-white hover:text-amber-400 text-xl font-bold">&times;</button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto space-y-4 text-sm">
+                <p class="text-xs text-gray-500 bg-blue-50 p-2 rounded border border-blue-200">Modifica los campos a continuación. Los cambios se guardarán localmente al presionar "Guardar".</p>
+                
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Título de Bienvenida (Inicio)</label>
+                    <input type="text" id="input-hero-titulo" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                </div>
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Subtítulo (Inicio)</label>
+                    <textarea id="input-hero-subtitulo" rows="2" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-bold text-gray-700 mb-1">Misión</label>
+                        <textarea id="input-nosotros-mision" rows="3" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                    </div>
+                    <div>
+                        <label class="block font-bold text-gray-700 mb-1">Visión</label>
+                        <textarea id="input-nosotros-vision" rows="3" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Horarios de Reuniones (Footer)</label>
+                    <textarea id="input-footer-horarios" rows="3" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                </div>
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Ubicación y Teléfonos (Footer)</label>
+                    <textarea id="input-footer-contacto" rows="3" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                </div>
+            </div>
+
+            <div class="p-4 border-t border-gray-200 bg-gray-50 flex justify-end space-x-3 rounded-b-xl">
+                <button onclick="toggleAdminModal()" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100 transition text-sm font-medium">Cancelar</button>
+                <button onclick="saveAdminChanges()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition text-sm font-medium shadow">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOGICA EN JAVASCRIPT -->
+    <script>
+        // Base de Datos de Versículos Bíblicos
+        const bibleVerses = [
+            { text: "Si se humillare mi pueblo, sobre el cual mi nombre es invocado, y oraren, y buscaren mi rostro, y se convirtieren de sus malos caminos; entonces yo oiré desde los cielos, y perdonaré sus pecados, y sanaré su tierra.", ref: "2 Crónicas 7:14" },
+            { text: "No temas, porque yo estoy contigo; no desmayes, porque yo soy tu Dios que te esfuerzo; siempre te ayudaré, siempre te sustentaré con la diestra de mi justicia.", ref: "Isaías 41:10" },
+            { text: "Porque yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal, para daros el fin que esperáis.", ref: "Jeremías 29:11" },
+            { text: "El que habita al amparo del Altísimo morará a la sombra del Omnipotente.", ref: "Salmos 91:1" },
+            { text: "Buscad primeramente el reino de Dios y su justicia, y todas estas cosas os serán añadidas.", ref: "Mateo 6:33" },
+            { text: "Todo lo puedo en Cristo que me fortalece.", ref: "Filipenses 4:13" },
+            { text: "Jehová es mi pastor; nada me faltará.", ref: "Salmos 23:1" }
+        ];
+
+        // Generador de versículos
+        function generateRandomVerse() {
+            const index = Math.floor(Math.random() * bibleVerses.length);
+            document.getElementById('verse-text').innerText = bibleVerses[index].text;
+            document.getElementById('verse-ref').innerText = "- " + bibleVerses[index].ref;
+        }
+
+        // Control del Modal Admin
+        function toggleAdminModal() {
+            const modal = document.getElementById('admin-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                // Cargar valores actuales en los inputs al abrir
+                document.getElementById('input-hero-titulo').value = document.getElementById('txt-hero-titulo').innerText;
+                document.getElementById('input-hero-subtitulo').value = document.getElementById('txt-hero-subtitulo').innerText;
+                document.getElementById('input-nosotros-mision').value = document.getElementById('txt-nosotros-mision').innerText;
+                document.getElementById('input-nosotros-vision').value = document.getElementById('txt-nosotros-vision').innerText;
+                document.getElementById('input-footer-horarios').value = document.getElementById('txt-footer-horarios').innerText;
+                document.getElementById('input-footer-contacto').value = document.getElementById('txt-footer-contacto').innerText;
+            }
+        }
+
+        // Guardar cambios en LocalStorage para simular persistencia
+        function saveAdminChanges() {
+            const data = {
+                heroTitulo: document.getElementById('input-hero-titulo').value,
+                heroSubtitulo: document.getElementById('input-hero-subtitulo').value,
+                mision: document.getElementById('input-nosotros-mision').value,
+                vision: document.getElementById('input-nosotros-vision').value,
+                horarios: document.getElementById('input-footer-horarios').value,
+                contacto: document.getElementById('input-footer-contacto').value,
+            };
+
+            localStorage.setItem('imac_page_data', JSON.stringify(data));
+            applyLoadedData(data);
+            toggleAdminModal();
+        }
+
+        // Aplicar datos en la interfaz
+        function applyLoadedData(data) {
+            if(!data) return;
+            if(data.heroTitulo) document.getElementById('txt-hero-titulo').innerText = data.heroTitulo;
+            if(data.heroSubtitulo) document.getElementById('txt-hero-subtitulo').innerText = data.heroSubtitulo;
+            if(data.mision) document.getElementById('txt-nosotros-mision').innerText = data.mision;
+            if(data.vision) document.getElementById('txt-nosotros-vision').innerText = data.vision;
+            if(data.horarios) document.getElementById('txt-footer-horarios').innerText = data.horarios;
+            if(data.contacto) document.getElementById('txt-footer-contacto').innerText = data.contacto;
+        }
+
+        // Inicialización al cargar la página
+        window.onload = function() {
+            generateRandomVerse();
+            const savedData = localStorage.getItem('imac_page_data');
+            if (savedData) {
+                applyLoadedData(JSON.parse(savedData));
+            }
+        };
+    </script>
+</body>
+</html>
