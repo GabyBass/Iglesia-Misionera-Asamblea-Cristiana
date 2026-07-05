@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iglesia Misionera Asamblea Cristiana - I.M.A.C.</title>
-    <!-- Tailwind CSS para diseño moderno y responsivo -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -16,8 +14,14 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center space-x-3 py-2">
-                    <!-- Integración del Logo real en la barra de navegación -->
-                    <img src="1000696501.jpg" alt="Logo I.M.A.C." class="w-14 h-14 object-cover rounded-full border-2 border-blue-600 shadow-sm bg-white">
+                    <div class="relative w-14 h-14">
+                        <img src="1000696501.jpg" alt="Logo I.M.A.C."
+                             class="w-14 h-14 object-cover rounded-full border-2 border-blue-600 shadow-sm bg-white"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-14 h-14 rounded-full border-2 border-blue-600 shadow-sm bg-blue-50 items-center justify-center text-blue-600 text-xl hidden">
+                            <i class="fa-solid fa-church"></i>
+                        </div>
+                    </div>
                     <div>
                         <span class="text-base md:text-lg font-bold text-blue-950 block leading-tight">Iglesia Misionera Asamblea Cristiana</span>
                         <span class="text-xs font-semibold text-blue-600 block">I.M.A.C. &bull; 2da de Crónica 7:14</span>
@@ -29,7 +33,7 @@
                     <a href="#nosotros" class="text-gray-600 hover:text-blue-600 font-medium">Nosotros</a>
                     <a href="#ministerios" class="text-gray-600 hover:text-blue-600 font-medium">Ministerios</a>
                     <a href="#contacto" class="text-gray-600 hover:text-blue-600 font-medium">Contacto</a>
-                    <button onclick="toggleAdminModal()" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition">
+                    <button onclick="handleAdminButtonClick()" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition">
                         <i class="fa-solid fa-lock mr-1"></i> Admin
                     </button>
                 </div>
@@ -37,12 +41,10 @@
         </div>
     </nav>
 
-    <!-- HÉROE / INICIO (Estructura de dos columnas integrando el Logo) -->
+    <!-- HÉROE / INICIO -->
     <header id="inicio" class="relative bg-gradient-to-r from-blue-950 to-blue-900 text-white py-16 md:py-24 px-4 overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
         <div class="relative max-w-6xl mx-auto grid md:grid-cols-12 gap-12 items-center">
-            
-            <!-- Columna de Texto -->
             <div class="md:col-span-7 text-left">
                 <span class="bg-amber-500 text-blue-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">I.M.A.C. &bull; 2da de Crónica 7:14</span>
                 <h1 id="txt-hero-titulo" class="text-4xl md:text-5xl font-extrabold mt-4 mb-6 leading-tight">Bienvenidos a nuestra comunidad de fe</h1>
@@ -51,20 +53,21 @@
                     Visítanos este Domingo
                 </a>
             </div>
-
-            <!-- Columna de Imagen (Integración Destacada del Logo) -->
             <div class="md:col-span-5 flex justify-center">
-                <div class="relative group">
-                    <!-- Resplandor dinámico de fondo para el logo -->
+                <div class="relative group w-64 h-64 md:w-80 md:h-80">
                     <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-blue-500 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-                    <img src="1000696501.jpg" alt="Logo Iglesia Misionera Asamblea Cristiana" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-white shadow-2xl bg-white">
+                    <img src="1000696501.jpg" alt="Logo Iglesia Misionera Asamblea Cristiana"
+                         class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-white shadow-2xl bg-white"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-white shadow-2xl bg-blue-50 items-center justify-center text-blue-600 text-6xl hidden">
+                        <i class="fa-solid fa-church"></i>
+                    </div>
                 </div>
             </div>
-
         </div>
     </header>
 
-    <!-- SECCIÓN: VERSÍCULO DIARIO (DINÁMICO) -->
+    <!-- SECCIÓN: VERSÍCULO DIARIO -->
     <section id="versiculo" class="bg-amber-50 py-12 px-4 shadow-inner">
         <div class="max-w-3xl mx-auto text-center">
             <div class="inline-block text-amber-600 text-3xl mb-3"><i class="fa-solid fa-book-bible"></i></div>
@@ -148,17 +151,49 @@
         </div>
     </footer>
 
+    <!-- MODAL DE AUTENTICACIÓN (REGISTRO / LOGIN) -->
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full">
+            <div class="p-5 border-b border-gray-200 bg-blue-900 text-white rounded-t-xl">
+                <h3 id="auth-modal-title" class="text-lg font-bold"><i class="fa-solid fa-user-shield mr-2"></i>Acceso de Administrador</h3>
+            </div>
+            <div class="p-6 space-y-4 text-sm">
+                <p id="auth-modal-desc" class="text-gray-600"></p>
+                <p id="auth-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-xs p-2 rounded"></p>
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Usuario</label>
+                    <input type="text" id="auth-username" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none" autocomplete="username">
+                </div>
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Contraseña</label>
+                    <input type="password" id="auth-password" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none" autocomplete="current-password">
+                </div>
+                <div id="auth-confirm-wrapper" class="hidden">
+                    <label class="block font-bold text-gray-700 mb-1">Confirmar Contraseña</label>
+                    <input type="password" id="auth-password-confirm" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none" autocomplete="new-password">
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-200 bg-gray-50 flex justify-end space-x-3 rounded-b-xl">
+                <button onclick="closeAuthModal()" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100 transition text-sm font-medium">Cancelar</button>
+                <button id="auth-submit-btn" onclick="submitAuth()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition text-sm font-medium shadow">Registrar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- MODAL DE ADMINISTRACIÓN (GESTOR DE CONTENIDO / CMS) -->
     <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col">
             <div class="p-5 border-b border-gray-200 flex justify-between items-center bg-blue-900 text-white rounded-t-xl">
                 <h3 class="text-lg font-bold"><i class="fa-solid fa-pen-to-square mr-2"></i>Panel de Administración de Contenido</h3>
-                <button onclick="toggleAdminModal()" class="text-white hover:text-amber-400 text-xl font-bold">&times;</button>
+                <div class="flex items-center space-x-4">
+                    <button onclick="logoutAdmin()" class="text-xs text-blue-200 hover:text-white underline">Cerrar sesión</button>
+                    <button onclick="toggleAdminModal(true)" class="text-white hover:text-amber-400 text-xl font-bold">&times;</button>
+                </div>
             </div>
-            
+
             <div class="p-6 overflow-y-auto space-y-4 text-sm">
                 <p class="text-xs text-gray-500 bg-blue-50 p-2 rounded border border-blue-200">Modifica los campos a continuación. Los cambios se guardarán localmente al presionar "Guardar".</p>
-                
+
                 <div>
                     <label class="block font-bold text-gray-700 mb-1">Título de Bienvenida (Inicio)</label>
                     <input type="text" id="input-hero-titulo" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
@@ -185,10 +220,24 @@
                     <label class="block font-bold text-gray-700 mb-1">Ubicación y Teléfonos (Footer)</label>
                     <textarea id="input-footer-contacto" rows="3" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
                 </div>
+
+                <div id="admin-management-section" class="hidden border-t border-gray-200 pt-4 mt-2 space-y-3">
+                    <h4 class="font-bold text-gray-800"><i class="fa-solid fa-users-gear mr-1 text-blue-600"></i>Gestionar Administradores</h4>
+                    <p class="text-xs text-gray-500">Solo el administrador principal puede ver esta sección y crear nuevas cuentas.</p>
+                    <div id="admin-list" class="space-y-2"></div>
+                    <div class="grid md:grid-cols-2 gap-3 pt-2">
+                        <input type="text" id="new-admin-username" placeholder="Nuevo usuario" class="border border-gray-300 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                        <input type="password" id="new-admin-password" placeholder="Contraseña" class="border border-gray-300 rounded px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+                    <p id="new-admin-error" class="hidden bg-red-50 border border-red-200 text-red-700 text-xs p-2 rounded"></p>
+                    <button onclick="addNewAdmin()" class="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded font-medium">
+                        <i class="fa-solid fa-user-plus mr-1"></i> Agregar Administrador
+                    </button>
+                </div>
             </div>
 
             <div class="p-4 border-t border-gray-200 bg-gray-50 flex justify-end space-x-3 rounded-b-xl">
-                <button onclick="toggleAdminModal()" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100 transition text-sm font-medium">Cancelar</button>
+                <button onclick="toggleAdminModal(true)" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100 transition text-sm font-medium">Cancelar</button>
                 <button onclick="saveAdminChanges()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition text-sm font-medium shadow">Guardar Cambios</button>
             </div>
         </div>
@@ -196,6 +245,10 @@
 
     <!-- LOGICA EN JAVASCRIPT -->
     <script>
+        const ADMIN_STORAGE_KEY = 'imac_admins';
+        const SESSION_KEY = 'imac_current_admin';
+        let authMode = 'register';
+
         // Base de Datos de Versículos Bíblicos
         const bibleVerses = [
             { text: "Si se humillare mi pueblo, sobre el cual mi nombre es invocado, y oraren, y buscaren mi rostro, y se convirtieren de sus malos caminos; entonces yo oiré desde los cielos, y perdonaré sus pecados, y sanaré su tierra.", ref: "2 Crónicas 7:14" },
@@ -207,29 +260,219 @@
             { text: "Jehová es mi pastor; nada me faltará.", ref: "Salmos 23:1" }
         ];
 
-        // Generador de versículos
         function generateRandomVerse() {
             const index = Math.floor(Math.random() * bibleVerses.length);
             document.getElementById('verse-text').innerText = bibleVerses[index].text;
             document.getElementById('verse-ref').innerText = "- " + bibleVerses[index].ref;
         }
 
-        // Control del Modal Admin
-        function toggleAdminModal() {
-            const modal = document.getElementById('admin-modal');
-            modal.classList.toggle('hidden');
-            if (!modal.classList.contains('hidden')) {
-                // Cargar valores actuales en los inputs al abrir
-                document.getElementById('input-hero-titulo').value = document.getElementById('txt-hero-titulo').innerText;
-                document.getElementById('input-hero-subtitulo').value = document.getElementById('txt-hero-subtitulo').innerText;
-                document.getElementById('input-nosotros-mision').value = document.getElementById('txt-nosotros-mision').innerText;
-                document.getElementById('input-nosotros-vision').value = document.getElementById('txt-nosotros-vision').innerText;
-                document.getElementById('input-footer-horarios').value = document.getElementById('txt-footer-horarios').innerText;
-                document.getElementById('input-footer-contacto').value = document.getElementById('txt-footer-contacto').innerText;
+        // ===== GESTIÓN DE ADMINISTRADORES =====
+
+        function getAdmins() {
+            try {
+                return JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY)) || [];
+            } catch (e) {
+                return [];
             }
         }
 
-        // Guardar cambios en LocalStorage para simular persistencia
+        function saveAdmins(admins) {
+            localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(admins));
+        }
+
+        function getSession() {
+            try {
+                return JSON.parse(sessionStorage.getItem(SESSION_KEY));
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function setSession(user) {
+            sessionStorage.setItem(SESSION_KEY, JSON.stringify({ username: user.username, isSuperAdmin: user.isSuperAdmin }));
+        }
+
+        function clearSession() {
+            sessionStorage.removeItem(SESSION_KEY);
+        }
+
+        function handleAdminButtonClick() {
+            const session = getSession();
+            if (session) {
+                openContentModal();
+                return;
+            }
+            const admins = getAdmins();
+            authMode = admins.length === 0 ? 'register' : 'login';
+            openAuthModal();
+        }
+
+        function openAuthModal() {
+            document.getElementById('auth-error').classList.add('hidden');
+            document.getElementById('auth-username').value = '';
+            document.getElementById('auth-password').value = '';
+            document.getElementById('auth-password-confirm').value = '';
+
+            if (authMode === 'register') {
+                document.getElementById('auth-modal-title').innerHTML = '<i class="fa-solid fa-user-shield mr-2"></i>Crear Administrador Principal';
+                document.getElementById('auth-modal-desc').innerText = 'Todavía no existe ningún administrador. Registra la primera cuenta: tendrá control total y será la única que pueda crear otros administradores.';
+                document.getElementById('auth-confirm-wrapper').classList.remove('hidden');
+                document.getElementById('auth-submit-btn').innerText = 'Registrar';
+            } else {
+                document.getElementById('auth-modal-title').innerHTML = '<i class="fa-solid fa-user-shield mr-2"></i>Iniciar sesión';
+                document.getElementById('auth-modal-desc').innerText = 'Ingresa tus credenciales de administrador.';
+                document.getElementById('auth-confirm-wrapper').classList.add('hidden');
+                document.getElementById('auth-submit-btn').innerText = 'Ingresar';
+            }
+            document.getElementById('auth-modal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').classList.add('hidden');
+        }
+
+        function submitAuth() {
+            const username = document.getElementById('auth-username').value.trim();
+            const password = document.getElementById('auth-password').value;
+            const errorEl = document.getElementById('auth-error');
+            errorEl.classList.add('hidden');
+
+            if (!username || !password) {
+                errorEl.innerText = 'Completa usuario y contraseña.';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            if (authMode === 'register') {
+                const confirmPassword = document.getElementById('auth-password-confirm').value;
+                if (password !== confirmPassword) {
+                    errorEl.innerText = 'Las contraseñas no coinciden.';
+                    errorEl.classList.remove('hidden');
+                    return;
+                }
+                const admins = getAdmins();
+                if (admins.length > 0) {
+                    errorEl.innerText = 'Ya existe un administrador principal. Por favor inicia sesión.';
+                    errorEl.classList.remove('hidden');
+                    authMode = 'login';
+                    setTimeout(openAuthModal, 800);
+                    return;
+                }
+                const newSuperAdmin = { username: username, password: password, isSuperAdmin: true };
+                saveAdmins([newSuperAdmin]);
+                setSession(newSuperAdmin);
+                closeAuthModal();
+                openContentModal();
+            } else {
+                const admins = getAdmins();
+                const match = admins.find(function (a) { return a.username === username && a.password === password; });
+                if (!match) {
+                    errorEl.innerText = 'Usuario o contraseña incorrectos.';
+                    errorEl.classList.remove('hidden');
+                    return;
+                }
+                setSession(match);
+                closeAuthModal();
+                openContentModal();
+            }
+        }
+
+        function logoutAdmin() {
+            clearSession();
+            toggleAdminModal(true);
+        }
+
+        function openContentModal() {
+            document.getElementById('admin-modal').classList.remove('hidden');
+
+            document.getElementById('input-hero-titulo').value = document.getElementById('txt-hero-titulo').innerText;
+            document.getElementById('input-hero-subtitulo').value = document.getElementById('txt-hero-subtitulo').innerText;
+            document.getElementById('input-nosotros-mision').value = document.getElementById('txt-nosotros-mision').innerText;
+            document.getElementById('input-nosotros-vision').value = document.getElementById('txt-nosotros-vision').innerText;
+            document.getElementById('input-footer-horarios').value = document.getElementById('txt-footer-horarios').innerText;
+            document.getElementById('input-footer-contacto').value = document.getElementById('txt-footer-contacto').innerText;
+
+            const session = getSession();
+            const manageSection = document.getElementById('admin-management-section');
+            if (session && session.isSuperAdmin) {
+                manageSection.classList.remove('hidden');
+                renderAdminList();
+            } else {
+                manageSection.classList.add('hidden');
+            }
+        }
+
+        function toggleAdminModal(forceClose) {
+            const modal = document.getElementById('admin-modal');
+            if (forceClose) {
+                modal.classList.add('hidden');
+                return;
+            }
+            modal.classList.toggle('hidden');
+        }
+
+        function renderAdminList() {
+            const admins = getAdmins();
+            const listEl = document.getElementById('admin-list');
+            listEl.innerHTML = '';
+            admins.forEach(function (admin) {
+                const row = document.createElement('div');
+                row.className = 'flex items-center justify-between bg-gray-50 border border-gray-200 rounded px-3 py-2';
+
+                const label = document.createElement('span');
+                label.innerText = admin.username + (admin.isSuperAdmin ? ' (Principal)' : '');
+                label.className = 'text-sm font-medium text-gray-700';
+                row.appendChild(label);
+
+                if (!admin.isSuperAdmin) {
+                    const delBtn = document.createElement('button');
+                    delBtn.innerText = 'Eliminar';
+                    delBtn.className = 'text-xs text-red-600 hover:text-red-800 font-medium';
+                    delBtn.onclick = function () { removeAdmin(admin.username); };
+                    row.appendChild(delBtn);
+                }
+                listEl.appendChild(row);
+            });
+        }
+
+        function addNewAdmin() {
+            const session = getSession();
+            if (!session || !session.isSuperAdmin) return;
+
+            const username = document.getElementById('new-admin-username').value.trim();
+            const password = document.getElementById('new-admin-password').value;
+            const errorEl = document.getElementById('new-admin-error');
+            errorEl.classList.add('hidden');
+
+            if (!username || !password) {
+                errorEl.innerText = 'Completa usuario y contraseña para el nuevo administrador.';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+            const admins = getAdmins();
+            if (admins.some(function (a) { return a.username === username; })) {
+                errorEl.innerText = 'Ese nombre de usuario ya existe.';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+            admins.push({ username: username, password: password, isSuperAdmin: false });
+            saveAdmins(admins);
+            document.getElementById('new-admin-username').value = '';
+            document.getElementById('new-admin-password').value = '';
+            renderAdminList();
+        }
+
+        function removeAdmin(username) {
+            const session = getSession();
+            if (!session || !session.isSuperAdmin) return;
+            let admins = getAdmins();
+            admins = admins.filter(function (a) { return a.username !== username; });
+            saveAdmins(admins);
+            renderAdminList();
+        }
+
+        // ===== CONTENIDO DEL SITIO =====
+
         function saveAdminChanges() {
             const data = {
                 heroTitulo: document.getElementById('input-hero-titulo').value,
@@ -242,22 +485,20 @@
 
             localStorage.setItem('imac_page_data', JSON.stringify(data));
             applyLoadedData(data);
-            toggleAdminModal();
+            toggleAdminModal(true);
         }
 
-        // Aplicar datos en la interfaz
         function applyLoadedData(data) {
-            if(!data) return;
-            if(data.heroTitulo) document.getElementById('txt-hero-titulo').innerText = data.heroTitulo;
-            if(data.heroSubtitulo) document.getElementById('txt-hero-subtitulo').innerText = data.heroSubtitulo;
-            if(data.mision) document.getElementById('txt-nosotros-mision').innerText = data.mision;
-            if(data.vision) document.getElementById('txt-nosotros-vision').innerText = data.vision;
-            if(data.horarios) document.getElementById('txt-footer-horarios').innerText = data.horarios;
-            if(data.contacto) document.getElementById('txt-footer-contacto').innerText = data.contacto;
+            if (!data) return;
+            if (data.heroTitulo) document.getElementById('txt-hero-titulo').innerText = data.heroTitulo;
+            if (data.heroSubtitulo) document.getElementById('txt-hero-subtitulo').innerText = data.heroSubtitulo;
+            if (data.mision) document.getElementById('txt-nosotros-mision').innerText = data.mision;
+            if (data.vision) document.getElementById('txt-nosotros-vision').innerText = data.vision;
+            if (data.horarios) document.getElementById('txt-footer-horarios').innerText = data.horarios;
+            if (data.contacto) document.getElementById('txt-footer-contacto').innerText = data.contacto;
         }
 
-        // Inicialización al cargar la página
-        window.onload = function() {
+        window.onload = function () {
             generateRandomVerse();
             const savedData = localStorage.getItem('imac_page_data');
             if (savedData) {
