@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
-
+ 
     <!-- BARRA DE NAVEGACIÓN -->
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,7 +40,7 @@
             </div>
         </div>
     </nav>
-
+ 
     <!-- HÉROE / INICIO -->
     <header id="inicio" class="relative bg-gradient-to-r from-blue-950 to-blue-900 text-white py-16 md:py-24 px-4 overflow-hidden">
         <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
@@ -66,7 +66,7 @@
             </div>
         </div>
     </header>
-
+ 
     <!-- SECCIÓN: VERSÍCULO DIARIO -->
     <section id="versiculo" class="bg-amber-50 py-12 px-4 shadow-inner">
         <div class="max-w-3xl mx-auto text-center">
@@ -81,7 +81,7 @@
             </button>
         </div>
     </section>
-
+ 
     <!-- SECCIÓN: NOSOTROS -->
     <section id="nosotros" class="py-16 px-4 max-w-5xl mx-auto">
         <div class="text-center mb-12">
@@ -101,7 +101,7 @@
             </div>
         </div>
     </section>
-
+ 
     <!-- SECCIÓN: MINISTERIOS -->
     <section id="ministerios" class="bg-gray-100 py-16 px-4">
         <div class="max-w-6xl mx-auto">
@@ -128,7 +128,7 @@
             </div>
         </div>
     </section>
-
+ 
     <!-- PIE DE PÁGINA / CONTACTO -->
     <footer id="contacto" class="bg-blue-950 text-white pt-12 pb-6 px-4">
         <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 border-b border-blue-900 pb-8 mb-6">
@@ -150,7 +150,7 @@
             &copy; 2026 Iglesia Misionera Asamblea Cristiana. Todos los derechos reservados.
         </div>
     </footer>
-
+ 
     <!-- MODAL DE AUTENTICACIÓN (REGISTRO / LOGIN) -->
     <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-xl shadow-2xl max-w-md w-full">
@@ -179,7 +179,7 @@
             </div>
         </div>
     </div>
-
+ 
     <!-- MODAL DE ADMINISTRACIÓN (GESTOR DE CONTENIDO / CMS) -->
     <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
         <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col">
@@ -190,10 +190,10 @@
                     <button onclick="toggleAdminModal(true)" class="text-white hover:text-amber-400 text-xl font-bold">&times;</button>
                 </div>
             </div>
-
+ 
             <div class="p-6 overflow-y-auto space-y-4 text-sm">
                 <p class="text-xs text-gray-500 bg-blue-50 p-2 rounded border border-blue-200">Modifica los campos a continuación. Los cambios se guardarán localmente al presionar "Guardar".</p>
-
+ 
                 <div>
                     <label class="block font-bold text-gray-700 mb-1">Título de Bienvenida (Inicio)</label>
                     <input type="text" id="input-hero-titulo" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
@@ -220,7 +220,7 @@
                     <label class="block font-bold text-gray-700 mb-1">Ubicación y Teléfonos (Footer)</label>
                     <textarea id="input-footer-contacto" rows="3" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
                 </div>
-
+ 
                 <div id="admin-management-section" class="hidden border-t border-gray-200 pt-4 mt-2 space-y-3">
                     <h4 class="font-bold text-gray-800"><i class="fa-solid fa-users-gear mr-1 text-blue-600"></i>Gestionar Administradores</h4>
                     <p class="text-xs text-gray-500">Solo el administrador principal puede ver esta sección y crear nuevas cuentas.</p>
@@ -235,20 +235,20 @@
                     </button>
                 </div>
             </div>
-
+ 
             <div class="p-4 border-t border-gray-200 bg-gray-50 flex justify-end space-x-3 rounded-b-xl">
                 <button onclick="toggleAdminModal(true)" class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100 transition text-sm font-medium">Cancelar</button>
                 <button onclick="saveAdminChanges()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition text-sm font-medium shadow">Guardar Cambios</button>
             </div>
         </div>
     </div>
-
+ 
     <!-- LOGICA EN JAVASCRIPT -->
     <script>
         const ADMIN_STORAGE_KEY = 'imac_admins';
         const SESSION_KEY = 'imac_current_admin';
         let authMode = 'register';
-
+ 
         // Base de Datos de Versículos Bíblicos
         const bibleVerses = [
             { text: "Si se humillare mi pueblo, sobre el cual mi nombre es invocado, y oraren, y buscaren mi rostro, y se convirtieren de sus malos caminos; entonces yo oiré desde los cielos, y perdonaré sus pecados, y sanaré su tierra.", ref: "2 Crónicas 7:14" },
@@ -259,15 +259,15 @@
             { text: "Todo lo puedo en Cristo que me fortalece.", ref: "Filipenses 4:13" },
             { text: "Jehová es mi pastor; nada me faltará.", ref: "Salmos 23:1" }
         ];
-
+ 
         function generateRandomVerse() {
             const index = Math.floor(Math.random() * bibleVerses.length);
             document.getElementById('verse-text').innerText = bibleVerses[index].text;
             document.getElementById('verse-ref').innerText = "- " + bibleVerses[index].ref;
         }
-
+ 
         // ===== GESTIÓN DE ADMINISTRADORES =====
-
+ 
         function getAdmins() {
             try {
                 return JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY)) || [];
@@ -275,11 +275,11 @@
                 return [];
             }
         }
-
+ 
         function saveAdmins(admins) {
             localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(admins));
         }
-
+ 
         function getSession() {
             try {
                 return JSON.parse(sessionStorage.getItem(SESSION_KEY));
@@ -287,15 +287,15 @@
                 return null;
             }
         }
-
+ 
         function setSession(user) {
             sessionStorage.setItem(SESSION_KEY, JSON.stringify({ username: user.username, isSuperAdmin: user.isSuperAdmin }));
         }
-
+ 
         function clearSession() {
             sessionStorage.removeItem(SESSION_KEY);
         }
-
+ 
         function handleAdminButtonClick() {
             const session = getSession();
             if (session) {
@@ -306,13 +306,13 @@
             authMode = admins.length === 0 ? 'register' : 'login';
             openAuthModal();
         }
-
+ 
         function openAuthModal() {
             document.getElementById('auth-error').classList.add('hidden');
             document.getElementById('auth-username').value = '';
             document.getElementById('auth-password').value = '';
             document.getElementById('auth-password-confirm').value = '';
-
+ 
             if (authMode === 'register') {
                 document.getElementById('auth-modal-title').innerHTML = '<i class="fa-solid fa-user-shield mr-2"></i>Crear Administrador Principal';
                 document.getElementById('auth-modal-desc').innerText = 'Todavía no existe ningún administrador. Registra la primera cuenta: tendrá control total y será la única que pueda crear otros administradores.';
@@ -326,23 +326,23 @@
             }
             document.getElementById('auth-modal').classList.remove('hidden');
         }
-
+ 
         function closeAuthModal() {
             document.getElementById('auth-modal').classList.add('hidden');
         }
-
+ 
         function submitAuth() {
             const username = document.getElementById('auth-username').value.trim();
             const password = document.getElementById('auth-password').value;
             const errorEl = document.getElementById('auth-error');
             errorEl.classList.add('hidden');
-
+ 
             if (!username || !password) {
                 errorEl.innerText = 'Completa usuario y contraseña.';
                 errorEl.classList.remove('hidden');
                 return;
             }
-
+ 
             if (authMode === 'register') {
                 const confirmPassword = document.getElementById('auth-password-confirm').value;
                 if (password !== confirmPassword) {
@@ -376,22 +376,22 @@
                 openContentModal();
             }
         }
-
+ 
         function logoutAdmin() {
             clearSession();
             toggleAdminModal(true);
         }
-
+ 
         function openContentModal() {
             document.getElementById('admin-modal').classList.remove('hidden');
-
+ 
             document.getElementById('input-hero-titulo').value = document.getElementById('txt-hero-titulo').innerText;
             document.getElementById('input-hero-subtitulo').value = document.getElementById('txt-hero-subtitulo').innerText;
             document.getElementById('input-nosotros-mision').value = document.getElementById('txt-nosotros-mision').innerText;
             document.getElementById('input-nosotros-vision').value = document.getElementById('txt-nosotros-vision').innerText;
             document.getElementById('input-footer-horarios').value = document.getElementById('txt-footer-horarios').innerText;
             document.getElementById('input-footer-contacto').value = document.getElementById('txt-footer-contacto').innerText;
-
+ 
             const session = getSession();
             const manageSection = document.getElementById('admin-management-section');
             if (session && session.isSuperAdmin) {
@@ -401,7 +401,7 @@
                 manageSection.classList.add('hidden');
             }
         }
-
+ 
         function toggleAdminModal(forceClose) {
             const modal = document.getElementById('admin-modal');
             if (forceClose) {
@@ -410,7 +410,7 @@
             }
             modal.classList.toggle('hidden');
         }
-
+ 
         function renderAdminList() {
             const admins = getAdmins();
             const listEl = document.getElementById('admin-list');
@@ -418,12 +418,12 @@
             admins.forEach(function (admin) {
                 const row = document.createElement('div');
                 row.className = 'flex items-center justify-between bg-gray-50 border border-gray-200 rounded px-3 py-2';
-
+ 
                 const label = document.createElement('span');
                 label.innerText = admin.username + (admin.isSuperAdmin ? ' (Principal)' : '');
                 label.className = 'text-sm font-medium text-gray-700';
                 row.appendChild(label);
-
+ 
                 if (!admin.isSuperAdmin) {
                     const delBtn = document.createElement('button');
                     delBtn.innerText = 'Eliminar';
@@ -434,16 +434,16 @@
                 listEl.appendChild(row);
             });
         }
-
+ 
         function addNewAdmin() {
             const session = getSession();
             if (!session || !session.isSuperAdmin) return;
-
+ 
             const username = document.getElementById('new-admin-username').value.trim();
             const password = document.getElementById('new-admin-password').value;
             const errorEl = document.getElementById('new-admin-error');
             errorEl.classList.add('hidden');
-
+ 
             if (!username || !password) {
                 errorEl.innerText = 'Completa usuario y contraseña para el nuevo administrador.';
                 errorEl.classList.remove('hidden');
@@ -461,7 +461,7 @@
             document.getElementById('new-admin-password').value = '';
             renderAdminList();
         }
-
+ 
         function removeAdmin(username) {
             const session = getSession();
             if (!session || !session.isSuperAdmin) return;
@@ -470,9 +470,9 @@
             saveAdmins(admins);
             renderAdminList();
         }
-
+ 
         // ===== CONTENIDO DEL SITIO =====
-
+ 
         function saveAdminChanges() {
             const data = {
                 heroTitulo: document.getElementById('input-hero-titulo').value,
@@ -482,12 +482,12 @@
                 horarios: document.getElementById('input-footer-horarios').value,
                 contacto: document.getElementById('input-footer-contacto').value,
             };
-
+ 
             localStorage.setItem('imac_page_data', JSON.stringify(data));
             applyLoadedData(data);
             toggleAdminModal(true);
         }
-
+ 
         function applyLoadedData(data) {
             if (!data) return;
             if (data.heroTitulo) document.getElementById('txt-hero-titulo').innerText = data.heroTitulo;
@@ -497,7 +497,7 @@
             if (data.horarios) document.getElementById('txt-footer-horarios').innerText = data.horarios;
             if (data.contacto) document.getElementById('txt-footer-contacto').innerText = data.contacto;
         }
-
+ 
         window.onload = function () {
             generateRandomVerse();
             const savedData = localStorage.getItem('imac_page_data');
